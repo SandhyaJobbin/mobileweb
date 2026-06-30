@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MapPin, Search, Signal, Phone, MessageSquare, ChevronRight, AlertCircle, Info, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "wouter";
 
 interface CoverageResult {
   address: string;
