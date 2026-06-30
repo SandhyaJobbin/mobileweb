@@ -29,12 +29,22 @@ function Router() {
   );
 }
 
+const getBase = () => {
+  const path = window.location.pathname;
+  const segments = path.split('/').filter(Boolean);
+  const knownRoutes = ["plans", "esim", "help", "refer", "activate", "quick-recharge"];
+  if (segments.length > 0 && !knownRoutes.includes(segments[0])) {
+    return `/${segments[0]}`;
+  }
+  return "";
+};
+
 function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="lyca-theme">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <WouterRouter base={getBase()}>
             <Router />
           </WouterRouter>
           <Toaster />
